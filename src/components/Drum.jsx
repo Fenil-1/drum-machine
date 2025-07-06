@@ -1,19 +1,37 @@
-import React from 'react'
-import './Drum.css'
-import PadBank from './PadBank'
-
-import Controls from './Controls'
+import PadBank from './PadBank';
+import { useState } from 'react';
+import { Box, Paper, Typography } from '@mui/material';
+import Volume from './Volume';
+import PowerBtn from './PowerBtn';
 const Drum = () => {
+  const [volume, setVolume] = useState(0.3);
   return (
-    <>
-    <div id='drum-machine'>
-      <div id='drum-machine-inner'>
-        <PadBank />    
-      </div>
-        <Controls />
-    </div>
-    </>
-  )
-}
+    <Box
+      id="drum-machine"
+      sx={{
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        gap: 2,
+        padding: 4,
+        bgcolor: '#f5f5f5',
+        minHeight: '100vh',
+      }}
+    >
+      <Typography variant="h4" component="h1" gutterBottom>
+        Drum Machine
+      </Typography>
 
-export default Drum
+      <Paper elevation={3} sx={{ padding: 2, width: '100%', maxWidth: 600 }}>
+        <PadBank volume={volume}/>
+      </Paper>
+
+      <Paper elevation={3} sx={{ padding: 2, width: '100%', maxWidth: 600 }}>
+        <PowerBtn />   
+        <Volume onVolumeChange={setVolume} />
+      </Paper>
+    </Box>
+  );
+};
+
+export default Drum;

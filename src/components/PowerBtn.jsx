@@ -1,25 +1,35 @@
-import React from 'react'
-import { useState } from 'react'
-const PowerBtn = ({Button}) => {
-    
-    const [isOn , setisOn] = useState(false)
-    const toggle = () => {
-      setisOn(!isOn)
-    } 
-    
-  return (
-    <div id='power-btn'>
-            <button onClick={toggle} style={{
-              padding: '10px 20px',
-              backgroundColor: isOn ? 'green' : 'gray',
-              color: 'white',
-              border: 'none',
-              borderRadius: '5px'
-            }}>
-              {isOn ? 'ON' : 'OFF'}
-            </button>
-      </div>
-  )
-}
+import React, { useState } from 'react';
+import { Button, Box } from '@mui/material';
 
-export default PowerBtn
+const PowerBtn = () => {
+  
+  const [isOn,setIsOn] = useState(true)
+
+  const toggle = () => {
+    setIsOn((prev) => !prev);
+   
+  };
+
+  return (
+    <Box id="power-btn">
+      <Button
+        variant="contained"
+        onClick={toggle}
+        sx={{
+          bgcolor: isOn ? 'success.main' : 'grey.700',
+          '&:hover': {
+            bgcolor: isOn ? 'success.dark' : 'grey.800',
+          },
+          color: 'white',
+          borderRadius: 2,
+          px: 4,
+          py: 1,
+        }}
+      >
+        {isOn ? 'ON' : 'OFF'}
+      </Button>
+    </Box>
+  );
+};
+
+export default PowerBtn;
