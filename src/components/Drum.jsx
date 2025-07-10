@@ -2,7 +2,8 @@ import PadBank from './PadBank';
 import { useState } from 'react';
 import { Box, Paper, Typography } from '@mui/material';
 import Volume from './Volume';
-import PowerBtn from './PowerBtn';
+import BasicSwitch from './BasicSwitch';
+
 const Drum = () => {
   const [volume, setVolume] = useState(0.3);
   return (
@@ -27,7 +28,7 @@ const Drum = () => {
       </Paper>
 
       <Paper elevation={3} sx={{ padding: 2, width: '100%', maxWidth: 600 }}>
-        <PowerBtn />   
+        <BasicSwitch />  
         <Volume onVolumeChange={setVolume} />
       </Paper>
     </Box>
