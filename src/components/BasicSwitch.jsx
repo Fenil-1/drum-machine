@@ -1,14 +1,17 @@
 import * as React from 'react';
 import Switch from '@mui/material/Switch';
-import { useState } from 'react';
 const label = { inputProps: { 'aria-label': 'Switch demo' } };
 
-const BasicSwitch = () => {
-  const [isOn , setIsOn] = useState(false);
+const BasicSwitch = ({isOn,setIsOn}) => {
+  const handleChange = () => {
+    setIsOn(!isOn);
+  }
+
   return (
-  
+
       <div>
-        <Switch {...label} />
+        {/* {isOn ? `<div>ON</div>` : `<div>OFF</div>`} */}
+        <Switch {...label} onChange={handleChange}/>
       </div>
     );
 }

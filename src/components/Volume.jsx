@@ -28,7 +28,8 @@ export default function VolumeSlider({ onVolumeChange }) {
           max={100}
         />
         <VolumeUp />
-      </Stack>
+        <div>{value}</div>
+      </Stack>  
     </Box>
   );
 }

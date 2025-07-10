@@ -5,6 +5,7 @@ import Volume from './Volume';
 import BasicSwitch from './BasicSwitch';
 
 const Drum = () => {
+  const [isOn, setIsOn] = useState(false);
   const [volume, setVolume] = useState(0.3);
   return (
     <Box
@@ -24,11 +25,11 @@ const Drum = () => {
       </Typography>
 
       <Paper elevation={3} sx={{ padding: 2, width: '100%', maxWidth: 600 }}>
-        <PadBank volume={volume}/>
+        <PadBank volume={volume} isOn={isOn}/>
       </Paper>
 
       <Paper elevation={3} sx={{ padding: 2, width: '100%', maxWidth: 600 }}>
-        <BasicSwitch />  
+        <BasicSwitch isOn={isOn} setIsOn={setIsOn} />  
         <Volume onVolumeChange={setVolume} />
       </Paper>
     </Box>

@@ -11,16 +11,18 @@ import Closed_HH from '../audio/Closed_HH.mp3';
 
 import { Box, Button, Typography, Grid, Paper } from '@mui/material';
 
-const PadBank = ({volume}) => {
+const PadBank = ({volume, isOn}) => {
   const [show, setShow] = useState('');
 
   const playSound = (src) => {
     const fileName = src.split(".")[0].split("/").at(-1);
-    const sound = new Audio(src);
-    sound.volume = volume ;
-    sound.play();
+    if(isOn){
+      const sound = new Audio(src);
+      sound.volume = volume ;
+      sound.play();
+      setShow(fileName);
+  }
     
-    setShow(fileName);
   };
   
   useEffect(() => {
@@ -43,7 +45,7 @@ const PadBank = ({volume}) => {
     return () => {
       window.removeEventListener('keydown', handlekey);
     };
-  }, [volume]);
+  }, [volume,isOn ]);
 
   const pads = [
     { key: 'Q', src: Heater_1 },
@@ -73,10 +75,10 @@ const PadBank = ({volume}) => {
           </Grid>
         ))}
       </Grid>
-
       <Paper elevation={3} sx={{ mt: 4, p: 2 }}>
         <Typography variant="h6" id="display">
-          {show || 'Press a key or click a button'}
+          {isOn ? show || 'Press a key or click a button' : 'Power on the machine'}
+          {/* {show || 'Press a key or click a button'} */}
         </Typography>
       </Paper>
     </Box>
