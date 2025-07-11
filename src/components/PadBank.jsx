@@ -15,7 +15,9 @@ const PadBank = ({volume, isOn}) => {
   const [show, setShow] = useState('');
 
   const playSound = (src) => {
-    const fileName = src.split(".")[0].split("/").at(-1);
+    console.log(src);
+    
+    const fileName = src.split(".")[0].split("/").at(-1).split("-")[0];
     if(isOn){
       const sound = new Audio(src);
       sound.volume = volume ;
